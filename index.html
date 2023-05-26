@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/style.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Vue3 - Condicionales y mas</title>
 </head>
 
 <body>
-  <div id="app">
-    <header>
-      <h1>{{titulo}}</h1>
-    </header>
-    <main>
-      <p>Esto es una funcion de method:{{sumaMethod()}}</p>
-      <p>Esto es una funcion de computed:{{sumaComputed}}</p>
+    <div id="app">
+        <!-- Formas de agregar clases a elementos HTML -->
+        <!-- <header :class="cssPropiedades">
+            <h1>{{title}}</h1>
+        </header> -->
+        <!-- <header :class="[warning, textSecodary]">
+            <h1>{{title}}</h1>
+        </header> -->
+        <!-- En este caso la clase se aplica en base a una expresion de ternario -->
+        <header :class="(classShow) ? warning : textSecodary, 'padding', 'margin'">
+            <h1 :style="{color: w}">{{title}}</h1>
+            <p :style="elementosCss">Holaaa</p>
+        </header>
+        <main>
+            <!-- Manejo de directivas condicionales  -->
+            <!-- <p v-if="mensaje.includes('Hola') && mensaje.includes('arbol')">Mensaje completo</p>
+        <p v-else>Mensaje incompleto</p>
+        <p v-show="show">Hola desde v-show</p>
+        <h3 v-show="log">User logged</h3>
 
-      <p v-text="mensaje"></p>
-      <div v-html="div"></div>
-
-      <img v-bind:src="url" v-bind:alt="alt">
-
-      <p>{{numero}}</p>
-      <button v-on:click="multiplicado" value="Click" >Multiplica x 10!</button>
-      <p>Resultado: {{numero}}</p>
-
-      <input type="text" v-model="parrafo">
-      <p>el parrafo es: {{parrafo}}</p>
-
-      <h3>directivas condicionales</h3>
-
-      <div v-show="duerme">
-        <p>a levantarse</p>
-      </div>
-
-      <!-- <p v-if="mensaje.icludes(`Brazil`)">Vive en Brasil</p>
-      <p v-elseif="mensaje.includes(`Chile`)">Es de Chile</p>
-      <p v-else>No esta involucrado con otros países</p>
-
-      <ul v-for="(nombre, i) of nombres">
-        <li>{{i}}</li>
-      </ul> -->
-
-
-
-    </main>
-  </div>
-
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="./app.js" type= "module"></script>
+        <div v-show="mostrarMensaje">
+        <p>Este se mensaje no esta oculto</p>
+        </div>
+        <button @click="showHide">Click!</button> -->
+        <!-- Directiva estructurales, uso de v-for -->
+            <div>
+                <!-- El siguiente elemento div que esta debajo de renderizara la cantidad de veces de elementos haya en un array, por ej si un array tiene 3 elementos este div se renderizara 3 veces -->
+                <div v-for="(data, i) of info">
+                    <img :src="data.img" :alt="data.name">
+                    <h2>{{data.name}}</h2>
+                    <div>
+                        <p>{{data.country}}</p>
+                        <p>{{data.phone}}</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab optio nostrum dicta similique adipisci sequi, fugit at provident rerum quidem aut! Earum labore esse repellat at possimus. Voluptatibus, necessitatibus totam.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./data.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./app.js"></script>
 </body>
+
 </html>
